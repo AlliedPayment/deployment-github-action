@@ -75,12 +75,13 @@ namespace deploy
             //update auto.tfvars 
             Render(terraform_path, "app.auto.tfvars", c);
             Render(terraform_path, "main.tf", c);
-            var branchName = c.deployment.Payload.Ref;
+            var version = Version.Parse(c.deployment.Payload.Version);
+            var branchName = "v" + version.Build;
 //            if (branchDef.AutoDeploy)
             {
                 if (branchDef.RequireApproval)
                 {
-                    branchName = "approve/" + c.deployment.Payload.Ref;
+                    branchName = "approve/" + "v" + version.Build;
                 }
             }
             Console.WriteLine("::set-output name=branch_name::" + branchName);
