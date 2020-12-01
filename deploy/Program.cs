@@ -32,13 +32,14 @@ namespace deploy
 
             //string path = @"C:\Source\billpay-deployment-qa";
             var workingDir = System.Environment.GetEnvironmentVariable("INPUT_WORKINGDIR");
-            if (!string.IsNullOrEmpty(workingDir))
+            if (string.IsNullOrEmpty(workingDir))
             {
                 workingDir = System.IO.Directory.GetCurrentDirectory();
             }
             string path = workingDir;
+            Console.WriteLine("Working Directory: " + path);
             System.IO.Directory.SetCurrentDirectory(path);
-            var yaml = System.IO.File.ReadAllText(System.IO.Path.Combine(path, @".github\ci\branches.yaml"));
+            var yaml = System.IO.File.ReadAllText(System.IO.Path.Combine(path, @".github/ci/branches.yaml"));
             var c = new Context();
 
             c.deployment.Payload = payload;
