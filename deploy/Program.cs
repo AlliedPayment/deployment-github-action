@@ -39,6 +39,8 @@ namespace deploy
             string path = workingDir;
             Console.WriteLine("Working Directory: " + path);
             System.IO.Directory.SetCurrentDirectory(path);
+            path = System.IO.Directory.GetCurrentDirectory();
+            Console.WriteLine("Working Directory: " + path);
             var yaml = System.IO.File.ReadAllText(System.IO.Path.Combine(path, @".github/ci/branches.yaml"));
             var c = new Context();
 
