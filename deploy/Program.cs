@@ -67,7 +67,7 @@ namespace deploy
             string terraform_path = branchDef.deploy_path;
             //ensure deployPath exists 
             System.IO.Directory.CreateDirectory(terraform_path);
-            string template_path = @".github\deploy\template";
+            string template_path = @".github/deploy/template";
 
             foreach (var file in System.IO.Directory.EnumerateFiles(template_path))
             {
