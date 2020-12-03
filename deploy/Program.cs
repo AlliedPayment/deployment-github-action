@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using LibGit2Sharp;
 using LibGit2Sharp.Handlers;
@@ -18,8 +19,7 @@ namespace deploy
             var yamlParser = new global::YamlDotNet.Serialization.Deserializer();
             DeploymentPayload payload;
             var data = System.Environment.GetEnvironmentVariable("INPUT_PAYLOAD");
-            data =
-                "\"{\\n  \\\"pr\\\": \\\"\\\",\\n  \\\"ref\\\": \\\"dev\\\",\\n  \\\"sha\\\": \\\"182ee80df33071b1908139c739f51f749e101c91\\\",\\n  \\\"version\\\": \\\"0.109.23897.10\\\"\\n}\"";
+            data = Regex.Unescape(data);
             if (data.StartsWith('"'))
             {
                 data = data.Remove(0,1);
