@@ -17,15 +17,9 @@ namespace deploy
         {
             var yamlParser = new global::YamlDotNet.Serialization.Deserializer();
             DeploymentPayload payload;
-            payload = Newtonsoft.Json.JsonConvert.DeserializeObject<DeploymentPayload>(System.Environment.GetEnvironmentVariable("INPUT_PAYLOAD"));
-            //payload = new DeploymentPayload()
-            //{
-            //    PR = "",
-            //    Ref = "dev",
-            //    Sha = "b150d5b0d26f4f9314a42a9435226751b7a011fa",
-            //    Version = "0.109.23719.10"
-            //};
-
+            var data = System.Environment.GetEnvironmentVariable("INPUT_PAYLOAD");
+            Console.WriteLine(data);
+            payload = Newtonsoft.Json.JsonConvert.DeserializeObject<DeploymentPayload>(data); 
 
             var branch = payload.Ref;
 
