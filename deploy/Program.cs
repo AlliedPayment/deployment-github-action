@@ -18,14 +18,16 @@ namespace deploy
             var yamlParser = new global::YamlDotNet.Serialization.Deserializer();
             DeploymentPayload payload;
             var data = System.Environment.GetEnvironmentVariable("INPUT_PAYLOAD");
+            data =
+                "\"{\\n  \\\"pr\\\": \\\"\\\",\\n  \\\"ref\\\": \\\"dev\\\",\\n  \\\"sha\\\": \\\"182ee80df33071b1908139c739f51f749e101c91\\\",\\n  \\\"version\\\": \\\"0.109.23897.10\\\"\\n}\"";
             if (data.StartsWith('"'))
             {
-                data = data.Remove(0);
+                data = data.Remove(0,1);
             }
 
             if (data.EndsWith('"'))
             {
-                data = data.Remove(data.Length - 1);
+                data = data.Remove(data.Length - 1,1);
             }
             Console.WriteLine(data);
             payload = Newtonsoft.Json.JsonConvert.DeserializeObject<DeploymentPayload>(data); 
