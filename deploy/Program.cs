@@ -18,6 +18,15 @@ namespace deploy
             var yamlParser = new global::YamlDotNet.Serialization.Deserializer();
             DeploymentPayload payload;
             var data = System.Environment.GetEnvironmentVariable("INPUT_PAYLOAD");
+            if (data.StartsWith('"'))
+            {
+                data = data.Remove(0);
+            }
+
+            if (data.EndsWith('"'))
+            {
+                data = data.Remove(data.Length - 1);
+            }
             Console.WriteLine(data);
             payload = Newtonsoft.Json.JsonConvert.DeserializeObject<DeploymentPayload>(data); 
 
