@@ -65,6 +65,7 @@ namespace deploy
             c.deployment.domain = branchDef.Domain;
             c.deployment.monolith_version = branchDef.MonolithVersion;
             c.modules_path = branchDef.modules_path;
+            c.deployment.Namespace = branchDef.Namespace;
             //load branch config 
             //if auto-deploy is true, then deploy -- otherwise don't 
 

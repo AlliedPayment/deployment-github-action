@@ -60,6 +60,10 @@ namespace deploy
         [YamlDotNet.Serialization.YamlMember(Alias = "pr")]
         public string PR { get; set; }
 
+        [YamlDotNet.Serialization.YamlMember(Alias = "namespace")]
+        public string Namespace { get; set; }
+
+
         [YamlDotNet.Serialization.YamlIgnore()]
         public Octokit.PullRequest PullRequest { get; set; }
 
@@ -91,6 +95,7 @@ namespace deploy
         public string Ref { get; set; }
         public string Sha { get; set; }
         public string Version { get; set; }
+
     }
     public class DeploymentContext
     {
@@ -101,6 +106,8 @@ namespace deploy
         public string domain { get; set; }
 
         public string pr { get; set; }
+
+        public string Namespace { get; set; }
 
         public DeploymentPayload Payload { get; set; }
     }
