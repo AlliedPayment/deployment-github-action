@@ -107,7 +107,7 @@ namespace deploy
 
         public string pr { get; set; }
 
-        public string Namespace { get; set; }
+        public string namespace { get; set; }
 
         public DeploymentPayload Payload { get; set; }
     }
