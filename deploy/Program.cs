@@ -59,6 +59,8 @@ namespace deploy
 
             var branchDef = def.FindMatch(branch);
 
+            Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(branchDef));
+
             c.deployment.pr = branchDef.PR;
             c.deployment.app_version = branchDef.AppVersion;
             c.deployment.dns_zone = branchDef.DnsZone;
