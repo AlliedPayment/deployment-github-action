@@ -96,6 +96,8 @@ namespace deploy
                 }
             }
             Console.WriteLine("::set-output name=branch_name::" + branchName);
+            Console.WriteLine("::set-output name=deployment_name::" + branchDef.DeployName);
+            
         }
 
 
